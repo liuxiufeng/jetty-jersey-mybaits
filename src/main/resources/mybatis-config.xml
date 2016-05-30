@@ -3,7 +3,7 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
    <typeAliases>
-     <typeAlias type="com.sample.common.model.User" alias="user"/>
+      <package name="com.sample.common.model"/>
   </typeAliases>  
   <environments default="development">
     <environment id="development">

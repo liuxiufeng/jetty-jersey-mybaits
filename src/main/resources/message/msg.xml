@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<messageBox>
+    <!-- BASE -->
+	<message ID='000001'>
+		Database execute error
+	</message>
+	
+	<!-- Login -->
+	<message ID='001001'>
+		The name is not correct!
+	</message>
+	
+	<message ID='001002'>
+		The password is not correct!
+	</message>
+</messageBox>

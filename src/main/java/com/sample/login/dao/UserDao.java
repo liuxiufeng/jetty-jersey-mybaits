@@ -9,6 +9,7 @@ public class UserDao extends DaoBase {
     public User getUser(String name) {
     	SqlSession session = sqlSessionFactory.openSession();
     	User user = session.selectOne("user.mybatis.selectAll", name);
+    	session.close();
     	return user;
     }
 }

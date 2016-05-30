@@ -5,7 +5,8 @@ import com.sample.login.dao.UserDao;
 
 public class UserServer {
 	private UserDao userDao = new UserDao();
-    public User getUser(String name) {	
+	
+	public User getUser(String name) {	
     	return userDao.getUser(name);
     }
 }
