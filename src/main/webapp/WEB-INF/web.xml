@@ -10,12 +10,27 @@
         </servlet-class>
         <init-param>
             <param-name>jersey.config.server.provider.packages</param-name>
-            <param-value>com.sample.login.webapp</param-value>
+            <param-value>com.sample.login.resources</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>Jersey Web Application</servlet-name>
-        <url-pattern>/sub/*</url-pattern>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
+    
+     <listener>
+        <listener-class>com.sample.common.listener.MyGuiceListener</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>guiceFilter</filter-name>
+        <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>guiceFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
 </web-app>

@@ -9,10 +9,10 @@
     <environment id="development">
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
-        <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
-        <property name="url" value="jdbc:oracle:thin:@192.168.1.167:1521:orcl"/>
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://192.168.1.248/test"/>
         <property name="username" value="contron"/>
-        <property name="password" value="pwd123456"/>
+        <property name="password" value="contron"/>
       </dataSource>
     </environment>
   </environments>
