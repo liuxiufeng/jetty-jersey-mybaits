@@ -1,29 +1,31 @@
-package com.sample.login.webapp;
+package com.sample.login.resources;
 
 import javax.ws.rs.DefaultValue;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
-
+import com.google.inject.Inject;
 import com.sample.common.model.User;
 import com.sample.common.utils.MsgUtils;
-import com.sample.login.service.UserServer;
+import com.sample.login.service.UserService;
 
 @Path("/token")
-public class tokenWebapp {
+public class TokenResource {
 	private final String NAME_ERROR_CODE = "001001";
 	private final String PWD_ERROR_CODE = "001002";
 	private final String DATABASE_ERROR_CODE = "000001";
 	
-	private UserServer userServer = new UserServer();
+	@Inject
+	private UserService userService;
 
-	@GET()
+	@POST()
 	public String validate(
-			@DefaultValue("") @QueryParam("name") String name,
-			@DefaultValue("") @QueryParam("pwd") String pwd) {
+			@DefaultValue("") @FormParam("name") String name,
+			@DefaultValue("") @FormParam("pwd") String pwd) {
 
 		try {
-			User user = userServer.getUser(name);
+			User user = userService.getUser(name);
 			if (user == null) {
 				return MsgUtils.getMessage(NAME_ERROR_CODE);
 			} else if (!user.getPwd().equals(pwd)) {
@@ -37,5 +39,10 @@ public class tokenWebapp {
 			return MsgUtils.getMessage(DATABASE_ERROR_CODE);
 		}
 
+	}
+	
+	@GET
+	public String hello() {
+		return userService.hello();
 	}
 }
