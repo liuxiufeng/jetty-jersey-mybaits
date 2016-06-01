@@ -1,6 +1,6 @@
 package com.sample.login.service.impl;
 
-import com.google.inject.Inject;
+import javax.inject.Inject;
 import com.sample.common.model.User;
 import com.sample.login.dao.UserDao;
 import com.sample.login.service.UserService;
