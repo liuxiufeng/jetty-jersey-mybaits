@@ -12,6 +12,7 @@ import javax.ws.rs.Path;
 
 import com.alibaba.fastjson.JSON;
 import com.sample.common.base.ResourceBase;
+import com.sample.common.config.Config;
 import com.sample.common.model.Result;
 import com.sample.common.model.User;
 import com.sample.common.utils.MsgUtils;
@@ -47,8 +48,6 @@ public class TokenResource extends ResourceBase {
 				return JSON.toJSONString(rst);
 			} else {
 				rst.setSuccess(true);
-				String data = "test";
-				rst.setData(data);
 				rst.setAccess_token(this.createToken(user));
 
 				return JSON.toJSONString(rst);
@@ -67,10 +66,9 @@ public class TokenResource extends ResourceBase {
 	}
 
 	private String createToken(User user) {
-		SecretKey key = MacProvider.generateKey();
 		JwtBuilder builder = Jwts.builder();
 		builder.setExpiration(new Date(System.currentTimeMillis() + 360000)).setSubject(user.getName())
-				.signWith(SignatureAlgorithm.HS512, key);
+				.signWith(SignatureAlgorithm.HS512, Config.KEY);
 		return builder.compact();
 	}
 

@@ -18,7 +18,7 @@ public class TokenResourceTest {
 	@Test
 	public void testLogin() throws Exception {
 		Client client = ClientBuilder.newClient();
-		WebTarget webTarget = client.target(TOKEN_URL).path("token");
+		WebTarget webTarget = client.target(TOKEN_URL).path("v1/token");
 		Form form = new Form();
 		form.param("name", "seven");
 		form.param("pwd", "seven");
@@ -32,7 +32,7 @@ public class TokenResourceTest {
 	@Test
 	public void testHello() throws Exception {
 		Client client = ClientBuilder.newClient();
-		WebTarget webTarget = client.target(TOKEN_URL).path("token");
+		WebTarget webTarget = client.target(TOKEN_URL).path("v1/token");
 		
 		String response = webTarget.request().get(String.class);
 		
